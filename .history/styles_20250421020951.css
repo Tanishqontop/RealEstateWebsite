@@ -1,0 +1,253 @@
+/* Font Face Declarations */
+@font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Basis Grotesque Arabic Pro', sans-serif;
+    background-color: #0f0f0f; /* Dark Background */
+    color: #ffffff; /* White Text */
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    backdrop-filter: blur(5px); /* Glassmorphism effect */
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #aaa;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.join-us {
+    color: #0f0f0f;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.join-us:hover {
+    background-color: #ddd;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Align items horizontally */
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    /* Removed Flex as unnecessary */
+    padding-bottom: 50px; /* Space for other elements */
+}
+
+/* Marquee Style Headline */
+.marquee-container {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    overflow: hidden;
+    z-index: 3;
+    /* Corrected positioning context */
+    left: 0;
+}
+
+.marquee-text {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 50px; /* Space between repetitions */
+    animation: marquee 15s linear infinite;
+}
+
+.marquee-text h1 {
+    font-size: 4em;
+    font-weight: 400;
+    margin: 0;
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Keyframes for Marquee Animation */
+@keyframes marquee {
+    0% {
+        transform: translateX(100%); /* Start offscreen right */
+    }
+    100% {
+        transform: translateX(-100%); /* End offscreen left */
+    }
+}
+
+.scroll-down {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.scroll-explore {
+    font-size: 1rem;
+    margin-top: 30px;
+}
+
+/* Content Section */
+.content-section {
+    padding: 100px 10%;
+    min-height: 50vh;
+    text-align: center;
+}
+
+.content-section h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.content-section p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav {
+        padding: 20px 30px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-actions {
+        align-self: flex-end;
+    }
+
+    .marquee-text h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content {
+        padding: 0 20px;
+    }
+}

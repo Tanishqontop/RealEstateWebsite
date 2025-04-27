@@ -1,0 +1,226 @@
+/* Font Face Declarations */
+@font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Basis Grotesque Arabic Pro', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #666;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.join-us {
+    color: #fff;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.join-us:hover {
+    background-color: #666;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+}
+
+/* Marquee Style Headline */
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+    width: 100%;
+    bottom: 120px; /* Adjust as needed */
+    left: 0; /* Start from the left edge */
+}
+
+.marquee-text {
+    display: inline-block;
+    padding-left: 100%; /* Start offscreen on the right */
+    animation: marquee 15s linear infinite; /* Adjust speed as needed */
+}
+
+.marquee-text h1 {
+    font-size: 4em;
+    font-weight: 400;
+    margin: 0;
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scroll-down {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.scroll-explore {
+    font-size: 1rem;
+    margin-top: 30px;
+}
+
+/* Content Section */
+.content-section {
+    padding: 100px 10%;
+    min-height: 50vh;
+    text-align: center;
+}
+
+.content-section h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.content-section p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav {
+        padding: 20px 30px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        padding: 10px 0;
+    }
+
+    .nav-actions {
+        align-self: flex-end;
+    }
+
+    .marquee-text h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content {
+        padding: 0 20px;
+    }
+}

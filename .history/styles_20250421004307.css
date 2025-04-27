@@ -1,0 +1,57 @@
+/* styles.css */
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.video-hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 4em;
+    opacity: 0; /* Initial hidden state */
+}
+
+.content-section {
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.parallax-image {
+    width: 50%;
+    height: 400px;
+    background: url('your-image.jpg') center/cover;
+}
+
+.text-box {
+    width: 50%;
+    padding: 2rem;
+}
+
+@media (max-width: 768px) {
+    .content-section {
+        flex-direction: column;
+    }
+    .parallax-image, .text-box {
+        width: 100%;
+    }
+}

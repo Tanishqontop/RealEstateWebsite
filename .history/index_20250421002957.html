@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scroll Animated Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8f8f8;
+      color: #111;
+      overflow-x: hidden;
+    }
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem;
+    }
+    .hero {
+      background: #111;
+      color: white;
+      flex-direction: column;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    .content {
+      background: white;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(50px);
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>Creative Web Layout</h1>
+    <p>Scroll down to explore animations</p>
+  </section>
+
+  <section class="content">
+    <h2>Scroll-triggered Section</h2>
+    <p>This content fades and slides into view using GSAP and ScrollTrigger.</p>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".hero h1", {
+      duration: 1,
+      opacity: 1,
+      y: 0,
+      delay: 0.2,
+      ease: "power2.out"
+    });
+
+    gsap.to(".hero p", {
+      duration: 1,
+      opacity: 1,
+      y: 0,
+      delay: 0.5,
+      ease: "power2.out"
+    });
+
+    gsap.to(".content", {
+      scrollTrigger: {
+        trigger: ".content",
+        start: "top 80%",
+      },
+      duration: 1,
+      opacity: 1,
+      y: 0,
+      ease: "power2.out"
+    });
+  </script>
+</body>
+</html>

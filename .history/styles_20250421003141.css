@@ -1,0 +1,92 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    overflow-x: hidden;
+  }
+  
+  section {
+    padding: 100px 20px;
+    text-align: center;
+  }
+  
+  .hero {
+    height: 100vh;
+    background: linear-gradient(120deg, #111, #333);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  .hero-sub {
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  .pin-section {
+    background: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pin-content {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pin-image {
+    width: 100%;
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  .pin-text {
+    margin-top: 20px;
+    font-size: 1.25rem;
+    opacity: 0;
+  }
+  
+  .gallery {
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .gallery-item {
+    font-size: 2rem;
+    background: white;
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  
+  .cta {
+    background: #222;
+    color: white;
+    padding: 100px 20px;
+  }
+  
+  .cta button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
