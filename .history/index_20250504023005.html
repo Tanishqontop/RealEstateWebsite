@@ -270,25 +270,22 @@
     </script>
     <script>
       document.getElementById('elementisForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
+        event.preventDefault();
     
-        // Get name and email from the form
-        const fullName = document.getElementById('fullName').value;
-        const email = document.getElementById('email').value;
+        // OPTIONAL: Validate or send data to backend/API here
     
-        // Show a quick thank-you message
-        alert("Thank you! Redirecting you to schedule your call...");
+        // Show a quick confirmation message (optional)
+        alert("Thank you! Redirecting you to book a call...");
     
-        // Your Calendly link with name and email pre-filled
-        const calendlyLink = `https://calendly.com/tanishqpratap/discovery-call?name=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}`;
+        // Replace with your actual Calendly link
+        const calendlyLink = "https://calendly.com/your-link";
     
-        // Redirect after short delay
-        setTimeout(() => {
+        // Optional: Add a brief delay (e.g. 1.5 seconds) before redirect
+        setTimeout(function() {
           window.location.href = calendlyLink;
         }, 1500);
       });
     </script>
-    
     
     
 </body>
