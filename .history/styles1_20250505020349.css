@@ -1,0 +1,287 @@
+@font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* Base Styles */
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  
+  body {
+      font-family: 'Basis Grotesque Arabic Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #344039;
+      overflow-x: hidden;
+  }
+
+/* Property Grid */
+/* Reset margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body styles */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #344039;
+    padding: 20px;
+  }
+
+  /* Nav container setup */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: transparent; /* or your desired bg */
+    z-index: 1000;
+  }
+  
+  /* Logo */
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Nav links */
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    flex-grow: 1;
+    justify-content: center;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 300;
+    position: relative;
+    letter-spacing: 0.02em;
+  }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: white;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  
+  /* Join Us Button */
+  .btn.font-button3 {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 25px;
+    cursor: pointer;
+    color: white;
+    font-weight: 300;
+    font-family: 'Basis Grotesque Arabic Pro', sans-serif;
+    background: transparent;
+    border: 2px solid white; /* Rectangular outline */
+    border-radius: 4px;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    outline-offset: 4px;
+    outline: none;
+    box-sizing: border-box;
+    overflow: visible;
+    z-index: 10;
+  }
+  
+  .btn.font-button3 .icon {
+    transition: transform 0.1s ease, fill 0.3s ease, stroke 0.3s ease;
+    stroke: white;
+  }
+
+  .btn.font-button3:hover .icon,
+  .btn.font-button3:focus .icon {
+    stroke: black;
+  }
+
+  
+  /* Hover and focus states */
+  .btn.font-button3:hover,
+  .btn.font-button3:focus {
+    background-color: white;
+    color: #0f0f0f;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    outline: none;
+  }
+  
+  .btn.font-button3:hover .icon,
+  .btn.font-button3:focus .icon {
+    transform: translateX(4px);
+    fill: #0f0f0f;
+  }
+  
+  /* SVG outline stroke animation */
+  .btn.font-button3 .btn-svg {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    pointer-events: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-dasharray: 288; /* approximate perimeter */
+    stroke-dashoffset: 288;
+    transition: stroke-dashoffset 1s ease;
+    border-radius: 4px;
+  }
+  
+  .btn.font-button3:hover .btn-svg,
+  .btn.font-button3:focus .btn-svg {
+    stroke-dashoffset: 0;
+  }
+  
+  /* Keyboard focus visible */
+  .btn.font-button3:focus-visible {
+     solid #fff;
+  }
+  
+  h2 {
+    font-size: 38px;
+    color: #ffffffff;
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 120px;
+    margin-left: 130px;
+  }
+
+  p {
+    font-size: 0.9vw;
+    color:rgb(0, 0, 0);
+    font-weight: 300;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    margin-left: 10px;
+  }
+  
+  /* Container for the property cards */
+  .property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18vw, 30vh));
+    gap: 40px;
+    margin-top: 60px;
+    margin-left: 130px;
+  }
+  
+  /* Card style */
+  .property-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .property-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  /* Property image */
+  .property-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  /* Card body */
+  .property-card .card-body {
+    padding: 20px;
+  }
+  
+  /* Property name */
+  .property-card h3 {
+    font-size: 1em;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 20px;
+
+  }
+  
+  /* Property price */
+  .property-card .price {
+    font-size: 0.15em;
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-left: 120px;
+    margin-right: 20px;
+
+  }
+  
+
+  .price {
+    font-size: 0.15em;
+    font-weight: 300;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-left: 120px;
+    margin-right: 20px;
+
+  }
+  /* Property location */
+  .property-card .location {
+    font-size: 0.25em;
+    color: #777;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 0 10px;
+  }
+  

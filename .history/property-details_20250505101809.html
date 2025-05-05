@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Property Details</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="property-details.css" />
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9SDip-n7ZBk-TFYnzdnEkj_kNNX17MdU&callback=initMap&v=weekly" async></script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Property Title and Location -->
+    <div class="property-header">
+      <div class="property-title" id="title">Loading...</div>
+      <div class="property-location" id="location">Loading location...</div>
+    </div>
+
+    <!-- Image Carousel -->
+    <div class="swiper">
+      <div class="swiper-wrapper" id="image-swiper"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Property Description & Pricing -->
+    <section class="property-info">
+      <div class="property-description" id="description"></div>
+      <div class="property-price">₹ <span id="price"></span></div>
+      <a href="#" class="book-button">Book Now</a>
+    </section>
+
+    <!-- Map Section -->
+    <section class="property-map">
+      <h1>Where you’ll be</h1>
+      <div id="map"></div>
+    </section>
+
+  </div>
+
+  <!-- JS Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.5/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="scripts/property-details.js"></script>
+</body>
+</html>

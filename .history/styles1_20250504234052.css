@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'Basis Grotesque Arabic Pro';
+    src: url('./BasisGrotesqueArabicPro-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  /* Base Styles */
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  
+  body {
+      font-family: 'Basis Grotesque Arabic Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color:rgb(255, 255, 255);
+      overflow-x: hidden;
+  }
+
+/* Property Grid */
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .property-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background: #fff;
+  }
+  
+  .property-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  
+  .property-card .content {
+    padding: 12px;
+  }
+  
+  .property-card h3 {
+    margin-top: 0;
+  }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Property Details</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="property-details.css" />
+
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9SDip-n7ZBk-TFYnzdnEkj_kNNX17MdU&callback=initMap&v=weekly" async></script>
+</head>
+<body>
+  <div class="container">
+    <div class="property-title" id="title">Loading...</div>
+    <div class="property-location" id="location"></div>
+
+    <div class="swiper">
+      <div class="swiper-wrapper" id="image-swiper"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="property-description" id="description"></div>
+    <div class="property-price">₹ <span id="price"></span> / night</div>
+    <a href="#" class="book-button">Book Now</a>
+
+    <!-- Google Map Container -->
+     <h1>Where is it:</h1>
+    <div id="map" style="height: 400px; width: 60%; margin-top: 20px;"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.5/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="scripts/property-details.js"></script>
+</body>
+</html>

@@ -1823,5 +1823,23 @@ form button:hover {
 }
 
 }
+/* Property Grid */
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 20px;
+}
 
+.property-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  background: #fff;
+}
 
+.property-card img {
+  width: 100%;
+  border-radius: 8px;
+}

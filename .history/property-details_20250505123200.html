@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Property Details</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="property-details.css" />
+  
+
+  
+</head>
+<body>
+  <div class="container">
+
+    <!-- Property Title and Location -->
+    <div class="property-header">
+      <div class="property-title" id="title">Loading...</div>
+      <div class="property-location" id="location">Loading location...</div>
+    </div>
+
+    <!-- Image Carousel -->
+    <div class="swiper">
+      <div class="swiper-wrapper" id="image-swiper"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Property Description & Pricing -->
+    <section class="property-info">
+      <div class="property-description" id="description"></div>
+      <div class="property-price">₹ <span id="price"></span></div>
+      <a href="#" class="book-button">Enquire Now</a>
+    </section>
+
+    <!-- Map Section -->
+    <section class="property-map">
+      <h1>Where you’ll be</h1>
+      <div id="map"></div>
+    </section>
+
+    <!-- Meet Your Host Section -->
+<section class="host-section">
+    <h2>Meet your host</h2>
+    <div class="host-card">
+      <img src="https://via.placeholder.com/100" alt="Host Photo" id="host-photo" />
+      <div class="host-details">
+        <h3 id="host-name"></h3>
+        <p id="host-bio"></p>
+        <button class="contact-host-button" id="contact-host-button">Contact Agent</button>
+      </div>
+    </div>
+  </section>
+  
+
+  </div>
+
+  <!-- JS Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.5/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPJstpDBokpi_PsMZriK-LNeRiE0ceEDw&callback=initMap&v=weekly"
+  async defer
+></script>
+<script>
+  document.getElementById('elementisForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Get name and email from the form
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
+
+    // Show a quick thank-you message
+    alert("Thank you! Redirecting you to schedule your call with Agent...");
+
+    // Your Calendly link with name and email pre-filled
+    const calendlyLink = `https://calendly.com/tanishqpratap/discovery-call?name=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}`;
+
+    // Redirect after short delay
+    setTimeout(() => {
+      window.location.href = calendlyLink;
+    }, 1500);
+  });
+</script>
+  <script src="scripts/property-details.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Available Properties</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .property-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .property-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      background: #fff;
+    }
+
+    .property-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .property-card .content {
+      padding: 12px;
+    }
+
+    .property-card h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Available Properties</h2>
+  <div id="property-listings" class="property-grid"></div>
+
+  <!-- Supabase UMD bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+  <script src="scripts/properties.js"></script>
+</body>
+</html>
