@@ -15,66 +15,6 @@ const heroVideo = document.querySelector('.hero-video')
 const marquee = document.querySelector('.marquee-container')
 const textBottom = document.querySelector('.text-bottom-wrapper')
 
-// Animate #wellness parallax
-const wellnessImage = document.querySelector('#wellness .image img')
-const wellnessText = document.querySelectorAll('#wellness .masking-text')
-
-// Scroll-based GSAP animation using window scrollY (manual)
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY
-
-  // Hero video slight scale
-  if (heroVideo) {
-    gsap.to(heroVideo, {
-      scale: 1,
-      duration: 0.3,
-      ease: 'power2.out',
-    })
-  }
-
-  // Move marquee slightly upward
-  if (marquee) {
-    gsap.to(marquee, {
-      y: -scrollY * 0.2,
-      duration: 0.3,
-      ease: 'power2.out',
-    })
-  }
-
-  // Move text-bottom upward
-  if (textBottom) {
-    gsap.to(textBottom, {
-      y: -scrollY * 0.15,
-      opacity: 1 - scrollY / 500,
-      duration: 0.3,
-    })
-  }
-
-  // Wellness image moves slower for parallax
-  if (wellnessImage) {
-    gsap.to(wellnessImage, {
-      y: scrollY * 0.05,
-      duration: 0.3,
-      ease: 'power2.out',
-    })
-  }
-
-  // Animate wellness section text opacity + rise
-  wellnessText.forEach((el, index) => {
-    const elTop = el.getBoundingClientRect().top
-    const windowHeight = window.innerHeight
-
-    if (elTop < windowHeight) {
-      gsap.to(el, {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out',
-      })
-    }
-  })
-})
-
 // DOM ready
 document.addEventListener("DOMContentLoaded", () => {
   setupMarqueeAnimation();

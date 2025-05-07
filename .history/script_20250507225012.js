@@ -26,7 +26,7 @@ window.addEventListener('scroll', () => {
   // Hero video slight scale
   if (heroVideo) {
     gsap.to(heroVideo, {
-      scale: 1,
+      scale: 1 ,
       duration: 0.3,
       ease: 'power2.out',
     })
