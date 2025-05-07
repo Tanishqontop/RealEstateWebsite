@@ -1,7 +1,7 @@
 
- 🌿 ELEMENTIS – Real Estate Lifestyle Website
+ 🌿 HABITAT – Real Estate Lifestyle Website
 
-Welcome to the ELEMENTIS website project. This is a modern, luxury real estate site designed to showcase exclusive wellness destinations, sustainable living, and transformative lifestyle experiences. It includes advanced scrolling effects, hover animations, and seamless integration with Calendly for inquiries.
+Welcome to the HABITAT website project. This is a modern, luxury real estate site designed to showcase exclusive wellness destinations, sustainable living, and transformative lifestyle experiences. It includes advanced scrolling effects, hover animations, and seamless integration with Calendly for inquiries.
 
 [View Live Demo]() (Inserting demo link soon)
 
