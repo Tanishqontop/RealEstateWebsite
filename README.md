@@ -15,7 +15,8 @@ Welcome to the HABITAT website project. This is a modern, luxury real estate sit
 - 🖱️ Hover Image Text Effects that reveal text on image hover
 - 📋 Inquiry Form that redirects users to a pre-filled Calendly link to schedule consultations
 - 🌍 Custom Form Fields for selecting locations and interests
-- 🌍 Listing To Buy Properties and Booking Visits
+- 🌍 Listing To Buy Properties and Booking Visits with Agents
+- 💸 Buy Properties through Auctions
 
 
 ---
