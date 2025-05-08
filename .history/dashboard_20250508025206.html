@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>Welcome to Your Dashboard</h1>
+      <div id="user-info">Loading user info...</div>
+      <button id="logout-btn">Logout</button>
+    </header>
+
+    <main>
+      <div class="dashboard-content">
+        <p>Your email: <strong id="user-email">Loading...</strong></p>
+        <p>Your user ID: <strong id="user-id">Loading...</strong></p>
+        
+        <!-- Bid History Section -->
+        <h2>Your Bid History</h2>
+        <div id="bid-history">
+          <!-- User's bid history will be dynamically inserted here -->
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script type="module">
+    import { supabase } from './utils/supabaseClient.js';
+
+    // Check user session on load
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      window.location.href = 'magic-login.html'; // Redirect to login if not logged in
+    } else {
+      document.getElementById('user-info').innerHTML = `
+        <p>Logged in as: <strong>${user.email}</strong></p>
+      `;
+      document.getElementById('user-email').textContent = user.email;
+      document.getElementById('user-id').textContent = user.id;
+
+      // Fetch bid history
+      fetchBidHistory(user.id);
+    }
+
+    // Fetch the user's bid history
+    async function fetchBidHistory(userId) {
+      const { data, error } = await supabase
+        .from('bids')
+        .select('amount, created_at, listings(title)')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false }); // Order by bid date, most recent first
+
+      if (error) {
+        console.error('Error fetching bid history:', error);
+        return;
+      }
+
+      displayBidHistory(data);
+    }
+
+    // Display the user's bid history dynamically
+    function displayBidHistory(bids) {
+      const bidHistoryElement = document.getElementById('bid-history');
+      if (bids.length === 0) {
+        bidHistoryElement.innerHTML = '<p>You haven\'t placed any bids yet.</p>';
+        return;
+      }
+
+      bids.forEach(bid => {
+        const bidCard = document.createElement('div');
+        bidCard.classList.add('bid-card');
+        bidCard.innerHTML = `
+          <p><strong>Property:</strong> ${bid.listings.title}</p>
+          <p><strong>Bid Amount:</strong> ₹ ${bid.amount.toLocaleString()}</p>
+          <p><strong>Date:</strong> ${new Date(bid.created_at).toLocaleString()}</p>
+        `;
+        bidHistoryElement.appendChild(bidCard);
+      });
+    }
+
+    // Logout functionality
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      alert("You have been logged out.");
+      window.location.href = 'magic-login.html'; // Redirect to login page
+    });
+  </script>
+</body>
+</html>

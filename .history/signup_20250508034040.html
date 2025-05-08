@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="signup-container">
+    <h1>Create an Account</h1>
+    <p>Join us and get started with your bidding journey!</p>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <button id="signup-btn">Sign Up</button>
+    <div id="error-message" class="error-message"></div>
+    <div class="footer">
+      <p>Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { supabase } from './utils/supabaseClient.js';
+
+    async function signUp() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('error-message');
+
+      // Validate the fields
+      if (!email || !password) {
+        errorMessage.textContent = 'Please fill in both fields.';
+        return;
+      }
+
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+
+      if (error) {
+        errorMessage.textContent = error.message;
+      } else {
+        alert("Signup successful! Please check your email.");
+        window.location.href = "login.html"; // Redirect to login page after successful signup
+      }
+    }
+
+    document.getElementById('signup-btn').addEventListener('click', signUp);
+  </script>
+</body>
+</html>

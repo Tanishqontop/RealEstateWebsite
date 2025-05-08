@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Auctions</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="auction-list-container">
+    <h1>Active Property Auctions</h1>
+    <div id="auction-list"></div>
+  </div>
+
+  <script type="module">
+    import { supabase } from './utils/supabaseClient.js';
+
+    // Fetching auction data from Supabase
+    async function loadAuctions() {
+      const { data, error } = await supabase
+        .from('auctions')
+        .select('id, property_id, current_bid, auction_end')
+        .eq('auction_status', 'active');
+
+      if (error) {
+        console.error(error.message);
+        return;
+      }
+
+      const auctionListContainer = document.getElementById('auction-list');
+      auctionListContainer.innerHTML = '';
+
+      data.forEach(auction => {
+        const auctionElement = document.createElement('div');
+        auctionElement.classList.add('auction-item');
+        auctionElement.innerHTML = `
+          <h3>Auction for Property ID: ${auction.property_id}</h3>
+          <p>Current Bid: ₹${auction.current_bid}</p>
+          <p>Auction Ends: ${new Date(auction.auction_end).toLocaleString()}</p>
+          <button onclick="placeBid(${auction.id}, ${auction.current_bid})">Place Bid</button>
+        `;
+        auctionListContainer.appendChild(auctionElement);
+      });
+    }
+
+    // Place a bid
+    async function placeBid(auctionId, currentBid) {
+      const newBid = prompt('Enter your bid:');
+      if (!newBid || isNaN(newBid)) {
+        alert('Invalid bid');
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from('bids')
+        .insert([{ auction_id: auctionId, user_id: 'user-id', bid_amount: newBid }]);
+
+      if (error) {
+        alert('Error placing bid: ' + error.message);
+        return;
+      }
+
+      alert('Bid placed successfully!');
+      // Update auction with new bid
+      await updateAuctionBid(auctionId, newBid);
+    }
+
+    // Update auction with new highest bid
+    async function updateAuctionBid(auctionId, newBid) {
+      const { data, error } = await supabase
+        .from('auctions')
+        .update({ current_bid: newBid })
+        .eq('id', auctionId);
+
+      if (error) {
+        alert('Error updating auction: ' + error.message);
+        return;
+      }
+
+      loadAuctions(); // Refresh auction list
+    }
+
+    loadAuctions();
+  </script>
+</body>
+</html>

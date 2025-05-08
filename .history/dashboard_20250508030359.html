@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>Welcome to Your Dashboard</h1>
+      <div id="user-info">Loading user info...</div>
+      <button id="logout-btn">Logout</button>
+      <button id="auction-btn">Go to Auction Page</button>
+    </header>
+
+    <main>
+      <div class="dashboard-content">
+        <p>Your email: <strong id="user-email">Loading...</strong></p>
+        <p>Your user ID: <strong id="user-id">Loading...</strong></p>
+
+        <section class="bid-history">
+          <h2>Your Bid History</h2>
+          <table id="bid-history-table">
+            <thead>
+              <tr>
+                <th>Listing</th>
+                <th>Amount</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="bid-history-body">
+              <!-- Bids will be injected here -->
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script type="module">
+    import { supabase } from './utils/supabaseClient.js';
+
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      window.location.href = 'magic-login.html';
+    } else {
+      document.getElementById('user-info').innerHTML = `<p>Logged in as: <strong>${user.email}</strong></p>`;
+      document.getElementById('user-email').textContent = user.email;
+      document.getElementById('user-id').textContent = user.id;
+
+      fetchBidHistory(user.id);
+    }
+
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      alert("You have been logged out.");
+      window.location.href = 'magic-login.html';
+    });
+
+    // Redirect to auction page
+    document.getElementById('auction-btn').addEventListener('click', () => {
+      window.location.href = 'auction-list.html';
+    });
+
+    // Fetch user's bid history
+    async function fetchBidHistory(userId) {
+      const { data, error } = await supabase
+        .from('bids')
+        .select(`
+          amount,
+          created_at,
+          listings (
+            title
+          )
+        `)
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error("Error fetching bid history:", error);
+        return;
+      }
+
+      const tbody = document.getElementById('bid-history-body');
+      tbody.innerHTML = '';
+
+      data.forEach(bid => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${bid.listings?.title || 'Unknown'}</td>
+          <td>₹ ${Number(bid.amount).toLocaleString()}</td>
+          <td>${new Date(bid.created_at).toLocaleString()}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+  </script>
+</body>
+</html>

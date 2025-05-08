@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Property Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-gap: 10px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .main-img {
+      grid-row: span 2;
+    }
+    h1 {
+      font-size: 28px;
+      margin-top: 20px;
+    }
+    .details, .price, .host {
+      margin-top: 20px;
+    }
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #28a745;
+    }
+    .host {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .host-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #ccc;
+      object-fit: cover;
+    }
+    .host-details {
+      flex: 1;
+    }
+    .host-details h3 {
+      margin: 0 0 4px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .host-details p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="property">Loading...</div>
+
+  <script type="module">
+   import { supabase } from './utils/supabaseClient.js';
+
+const params = new URLSearchParams(window.location.search);
+const propertyId = params.get('id');
+
+let map; // Declare globally for callback
+window.initMap = function () {}; // Temporary placeholder
+
+async function fetchProperty() {
+  const { data, error } = await supabase
+    .from('listings')
+    .select('*')
+    .eq('id', propertyId)
+    .single();
+
+  if (error || !data) {
+    document.getElementById('property').innerHTML = `<p>Error loading property.</p>`;
+    console.error(error);
+    return;
+  }
+
+  const imageUrls = data.image_url || [];
+
+  const galleryHTML = `
+    <div class="gallery">
+      ${imageUrls[0] ? `<img src="${imageUrls[0]}" class="main-img" alt="Main Image">` : ''}
+      ${imageUrls.slice(1, 5).map(url => `<img src="${url}" alt="Extra Image">`).join('')}
+    </div>
+  `;
+
+  document.getElementById('property').innerHTML = `
+    ${galleryHTML}
+    <h1>${data.title}</h1>
+    <div class="details">
+      <p><strong>Location:</strong> ${data.location || 'Unknown'}, India</p>
+         <strong>Bedrooms:</strong> ${data.bedrooms || '-'} · 
+         <strong>Living Rooms:</strong> ${data.livingrooms || '-'} · 
+         <strong>Bathrooms:</strong> ${data.bathrooms || '-'}</p>
+    </div>
+    <div class="price">Starting from ₹ ${data.starting_price.toLocaleString()}</div>
+    <div class="host">
+      <img src="${data.host_avatar}" alt="Host Avatar" class="host-avatar" />
+      <div class="host-details">
+        <h3>Hosted by ${data.host_name || 'Unknown Host'}</h3>
+        <p>${data.description}</p>
+      </div>
+    </div>
+  `;
+
+  // Initialize the map using coordinates from the listing
+  const { latitude, longitude } = data;
+  if (latitude && longitude) {
+    window.initMap = function () {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: latitude, lng: longitude },
+        zoom: 15,
+      });
+
+      new google.maps.Marker({
+        position: { lat: latitude, lng: longitude },
+        map: map,
+        title: data.title,
+      });
+    };
+  } else {
+    document.getElementById("map").innerHTML = "<p>Location not available.</p>";
+  }
+}
+
+fetchProperty();
+
+  </script>
+  <!-- Map Container -->
+<div id="map" style="width: 100%; height: 400px; margin: 30px 0; border-radius: 10px;"></div>
+
+<!-- Google Maps JavaScript API -->
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPJstpDBokpi_PsMZriK-LNeRiE0ceEDw&callback=initMap">
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  .properties-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .property-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .property-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .property-card h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  .property-card p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .property-card .price,
+  .property-card .auction-end {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .property-card .auction-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .property-card .auction-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .property-card .current-bid {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  

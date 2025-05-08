@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>Welcome to Your Dashboard</h1>
+      <div id="user-info">Loading user info...</div>
+      <button id="logout-btn">Logout</button>
+      <button id="go-to-auctions">Auction Page</button>
+    </header>
+
+    <main>
+      <div class="dashboard-content">
+        <p>Your email: <strong id="user-email">Loading...</strong></p>
+        <p>Your user ID: <strong id="user-id">Loading...</strong></p>
+
+        <h2>Your Bid History</h2>
+        <ul id="bid-history-list">
+          <li>Loading bid history...</li>
+        </ul>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script type="module">
+    import { supabase } from './utils/supabaseClient.js';
+
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      window.location.href = 'magic-login.html';
+    } else {
+      document.getElementById('user-info').innerHTML = `Logged in as: <strong>${user.email}</strong>`;
+      document.getElementById('user-email').textContent = user.email;
+      document.getElementById('user-id').textContent = user.id;
+
+      fetchBidHistory(user.id);
+    }
+
+    // Redirect button
+    document.getElementById('go-to-auctions').addEventListener('click', () => {
+      window.location.href = 'auction-list.html';
+    });
+
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      alert("You have been logged out.");
+      window.location.href = 'magic-login.html';
+    });
+
+    // Fetch bid history
+    async function fetchBidHistory(userId) {
+      const { data, error } = await supabase
+        .from('bids')
+        .select('amount, created_at, listings(title)')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false });
+
+      const list = document.getElementById('bid-history-list');
+      list.innerHTML = ''; // Clear initial "Loading..."
+
+      if (error) {
+        console.error('Error fetching bid history:', error);
+        list.innerHTML = `<li>Error loading bid history.</li>`;
+        return;
+      }
+
+      if (data.length === 0) {
+        list.innerHTML = `<li>No bids placed yet.</li>`;
+        return;
+      }
+
+      data.forEach(bid => {
+        const li = document.createElement('li');
+        li.textContent = `₹${bid.amount} on "${bid.listings.title}" — ${new Date(bid.created_at).toLocaleString()}`;
+        list.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

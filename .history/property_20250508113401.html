@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Property Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-gap: 10px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .main-img {
+      grid-row: span 2;
+    }
+    h1 {
+      font-size: 28px;
+      margin-top: 20px;
+    }
+    .details, .price, .host {
+      margin-top: 20px;
+    }
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #28a745;
+    }
+    .host {
+      background: #fff;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="property">Loading...</div>
+
+  <script type="module">
+    import { supabase } from './utils/supabaseClient.js';
+
+    const params = new URLSearchParams(window.location.search);
+    const propertyId = params.get('id');
+
+    async function fetchProperty() {
+      const { data, error } = await supabase
+        .from('listings')
+        .select('*')
+        .eq('id', propertyId)
+        .single();
+
+      if (error || !data) {
+        document.getElementById('property').innerHTML = `<p>Error loading property.</p>`;
+        console.error(error);
+        return;
+      }
+
+      const imageUrls = [data.image_url, ...(data.extra_images || [])];
+
+      const galleryHTML = imageUrls.slice(0, 5).map((url, i) =>
+        `<img src="${url}" class="${i === 0 ? 'main-img' : ''}" alt="Property image" />`
+      ).join('');
+
+      document.getElementById('property').innerHTML = `
+        <div class="gallery">${galleryHTML}</div>
+        <h1>${data.title}</h1>
+        <div class="details">
+          <p><strong>Location:</strong> ${data.location || 'Unknown'}, India</p>
+          <p><strong>Guests:</strong> ${data.guests || 'N/A'} · 
+             <strong>Bedrooms:</strong> ${data.bedrooms || '-'} · 
+             <strong>Beds:</strong> ${data.beds || '-'} · 
+             <strong>Bathrooms:</strong> ${data.bathrooms || '-'}</p>
+        </div>
+        <div class="price">Starting from ₹ ${data.starting_price.toLocaleString()}</div>
+        <div class="host">
+          <p><strong>Hosted by:</strong> ${data.host_name || 'Unknown Host'}</p>
+          <p>${data.description}</p>
+        </div>
+      `;
+    }
+
+    fetchProperty();
+  </script>
+</body>
+</html>

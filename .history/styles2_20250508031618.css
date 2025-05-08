@@ -1,0 +1,198 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #f0f4f8;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #111;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  transition: all 0.3s ease;
+}
+
+.dashboard-container:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+header button {
+  padding: 12px 30px;
+  background-color: #3498db;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+}
+
+header button:hover {
+  background-color: #2980b9;
+  box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+}
+
+header button:active {
+  background-color: #1f6f8b;
+  transform: translateY(1px);
+}
+
+/* Main Section Styling */
+main {
+  padding: 30px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.dashboard-content p {
+  font-size: 1.1rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.dashboard-content strong {
+  color: #333;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#user-info {
+  font-size: 1rem;
+  color: #16a085;
+  margin-bottom: 20px;
+}
+
+#bid-history {
+  margin-top: 40px;
+}
+
+#bid-history-list {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+#bid-history-list li {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#bid-history-list li:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+#bid-history-list li .bid-title {
+  font-size: 1.3rem;
+  color: #3498db;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+#bid-history-list li .bid-details {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+#bid-history-list li .bid-amount {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #27ae60;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #7f8c8d;
+  margin-top: 30px;
+}
+
+footer p {
+  font-size: 1rem;
+  color: #3498db;
+}
+
+footer p a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+footer p a:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  header button {
+    margin-top: 10px;
+  }
+
+  .dashboard-container {
+    padding: 25px;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  .dashboard-content p {
+    font-size: 1rem;
+  }
+
+  #bid-history-list {
+    grid-template-columns: 1fr;
+  }
+}

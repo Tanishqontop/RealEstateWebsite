@@ -1,0 +1,150 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f7fa;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #222;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #4CAF50;
+}
+
+header button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+header button:hover {
+  background-color: #45a049;
+}
+
+main {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.dashboard-content p {
+  font-size: 1rem;
+  color: #777;
+}
+
+.dashboard-content strong {
+  color: #333;
+  font-weight: bold;
+}
+
+#user-info {
+  font-size: 1rem;
+  color: #4CAF50;
+}
+
+#bid-history-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#bid-history-list li {
+  background-color: #f1f1f1;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#bid-history-list li:nth-child(even) {
+  background-color: #e8f5e9;
+}
+
+#bid-history-list li span {
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #999;
+  margin-top: 20px;
+}
+
+footer p {
+  font-size: 1rem;
+  color: #4CAF50;
+}
+
+footer p a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+footer p a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  header button {
+    margin-top: 10px;
+  }
+
+  .dashboard-container {
+    padding: 15px;
+  }
+
+  main {
+    padding: 15px;
+  }
+
+  .dashboard-content p {
+    font-size: 0.9rem;
+  }
+}

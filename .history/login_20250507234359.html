@@ -1,0 +1,17 @@
+<input type="email" id="email" placeholder="Email" />
+<input type="password" id="password" placeholder="Password" />
+<button onclick="logIn()">Log In</button>
+
+<script type="module">
+  import supabase from './utils/supabaseClient.js';
+
+  async function logIn() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) return alert(error.message);
+
+    window.location.href = 'dashboard.html';
+  }
+</script>
