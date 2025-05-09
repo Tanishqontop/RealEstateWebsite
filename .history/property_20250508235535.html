@@ -5,53 +5,12 @@
   <title>Property Details</title>
   <link rel="icon" href="favicon-dark.ico" type="image/x-icon" />
   <style>
-
-    /* Font Face Declarations */
-@font-face {
-    font-family: 'Basis Grotesque Arabic Pro';
-    src: url('./BasisGrotesqueArabicPro-Light.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'Basis Grotesque Arabic Pro';
-    src: url('./BasisGrotesqueArabicPro-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'Basis Grotesque Arabic Pro';
-    src: url('./BasisGrotesqueArabicPro-Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'Basis Grotesque Arabic Pro';
-    src: url('./BasisGrotesqueArabicPro-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  /* Base Styles */
-  * {
+    body {
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-  }
-  
-  body {
-      font-family: 'Basis Grotesque Arabic Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background: #fafafa;      
-      overflow-x: hidden;
-  }
-  
+      background: #fafafa;
+    }
     .container {
     max-width: 1200px;
     margin: 40px auto;
@@ -74,24 +33,8 @@
       font-size: 28px;
       margin-top: 20px;
     }
-
-    .details {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 20px;
-      border: 1px solid #000000;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .details img {
-     margin-left: 20px;
-     vertical-align: middle;
-     }
-
     .details, .price, .host {
-      margin-top: 50px;
+      margin-top: 20px;
     }
     .price {
       font-size: 22px;
@@ -187,14 +130,11 @@
         ${galleryHTML}
         <h1>${data.title}</h1>
         <div class="details">
-          <img width="30" height="30" src="https://img.icons8.com/3d-fluency/94/globe.png" alt="globe"/>
           <p><strong>Location:</strong> ${data.location || 'Unknown'}</p>
-          <img width="50" height="50" src="https://img.icons8.com/isometric/50/bed.png" alt="bed"/>
+          <img width="50" height="50" src="https://img.icons8.com/ios/50/bed.png" alt="bed"/>
           <p><strong>Bedrooms:</strong> ${data.bedrooms || '-'} · 
-          <img width="48" height="48" src="https://img.icons8.com/pulsar-gradient/48/three-seater-sofa.png" alt="three-seater-sofa"/>
-          <strong>Living Rooms:</strong> ${data.livingrooms || '-'} · 
-          <img width="50" height="50" src="https://img.icons8.com/nolan/64/shower.png" alt="shower"/>
-          <strong>Bathrooms:</strong> ${data.bathrooms || '-'}</p>
+             <strong>Living Rooms:</strong> ${data.livingrooms || '-'} · 
+             <strong>Bathrooms:</strong> ${data.bathrooms || '-'}</p>
         </div>
         <div class="price">Starting from ₹ ${data.starting_price.toLocaleString()}</div>
         <div class="host">

@@ -1,0 +1,105 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+}
+
+.banner {
+  background-color: #343a40;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.winners-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 30px;
+  gap: 20px;
+}
+
+/* Winner card styling */
+.property-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.property-card:hover {
+  transform: scale(1.03);
+}
+
+.property-card h3 {
+  margin-top: 15px;
+  font-size: 1.25em;
+}
+
+.property-card p {
+  margin: 8px 0;
+  font-size: 0.95em;
+}
+
+/* Swiper container */
+.swiper-container {
+  width: 100%;
+  height: 220px;
+  margin: 10px 0 20px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Swiper slide image */
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Swiper arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Swiper pagination */
+.swiper-pagination {
+  bottom: 8px !important;
+}
+
+/* Back button styling */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.back-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.back-button span {
+  font-size: 14px;
+  color: #333;
+}

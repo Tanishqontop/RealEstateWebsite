@@ -183,6 +183,7 @@ nav {
     color: white;
     padding: 120px 20px 60px; /* Added top padding instead of margin */
     text-align: center;
+    margin-top: 90px; /* Adjusted for fixed header */
     margin-bottom: 30px;
     position: relative;
   }

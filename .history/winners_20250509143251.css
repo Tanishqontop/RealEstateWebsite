@@ -1,0 +1,51 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+  }
+  
+  .banner {
+    background-color: #343a40;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .winners-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px;
+  }
+  
+  .property-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px;
+    max-width: 320px;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s;
+  }
+  
+  .property-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .property-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .property-card h3 {
+    margin-top: 15px;
+    font-size: 1.25em;
+  }
+  
+  .property-card p {
+    margin: 8px 0;
+    font-size: 0.95em;
+  }
+  

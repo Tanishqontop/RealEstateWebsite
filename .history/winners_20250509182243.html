@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auction Winners | HABITAT</title>
+  <link rel="stylesheet" href="winners.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
+  <style>
+    .back-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 20px;
+      cursor: pointer;
+      width: fit-content;
+    }
+
+    .back-button img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .back-button span {
+      font-size: 16px;
+      color: #333;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <section class="banner">
+    <h1>🏆 Auction Winners</h1>
+    <p>Congratulations to our top bidders!</p>
+  </section>
+
+  <!-- 🔙 Back Button -->
+  <div class="back-button" onclick="history.back()">
+    <img src="https://img.icons8.com/glyph-neue/64/circled-left-2.png" alt="Back" />
+    <span>Go Back</span>
+  </div>
+
+  <section class="winners-container" id="winners-list">
+    <!-- Winner cards will be populated here -->
+  </section>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script type="module" src="winners.js"></script>
+</body>
+</html>

@@ -19,8 +19,7 @@ async function placeBid(propertyId, currentBidAmount) {
     return;
   }
 
-  // Insert new bid into 'bids' table
-  const { error: bidError } = await supabase
+  const { error } = await supabase
     .from('bids')
     .insert([
       {
@@ -30,23 +29,8 @@ async function placeBid(propertyId, currentBidAmount) {
       }
     ]);
 
-  if (bidError) {
-    alert(`Error placing bid: ${bidError.message}`);
-    return;
-  }
-
-  // Update the listing with the new highest bid and winning user
-  const { error: updateError } = await supabase
-    .from('listings')
-    .update({
-      winning_bid: Number(newBidAmount),
-      winner_user_id: user.id
-    })
-    .eq('id', propertyId);
-
-  if (updateError) {
-    console.error('Error updating listing:', updateError);
-    alert('Bid placed, but failed to update the listing.');
+  if (error) {
+    alert(`Error placing bid: ${error.message}`);
     return;
   }
 
@@ -69,7 +53,7 @@ async function fetchHighestBid(propertyId) {
   }
 
   const currentBidElement = document.getElementById(`current-bid-${propertyId}`);
-  if (data && data.length > 0 && currentBidElement) {
+  if (data && data.length > 0) {
     currentBidElement.innerText = `Current Bid: ₹ ${data[0].amount.toLocaleString()}`;
   }
 }
