@@ -17,6 +17,7 @@ Welcome to the HABITAT website project. This is a modern, luxury real estate sit
 - 🌍 Custom Form Fields for selecting locations and interests
 - 🌍 Listing To Buy Properties and Booking Visits with Agents
 - 💸 Buy Properties through Auctions
+- 🎊 Winners are Listed in the Winners section after Auction Ends
 
 
 ---
