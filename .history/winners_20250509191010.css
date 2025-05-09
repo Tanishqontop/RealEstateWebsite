@@ -6,6 +6,7 @@ body {
 
 .banner {
   background: url('https://images.unsplash.com/photo-1621293954908-907159247fc8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+  background-color: #343a40;
   color: white;
   padding: 40px 20px;
   text-align: center;
@@ -16,22 +17,8 @@ body {
   top: 0; left: 0;
   width: 100%;
   height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
   z-index: 1;
-}
-
-.banner-content {
-  position: relative;
-  z-index: 2;
-}
-
-.banner-content h2 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-}
-
-.banner-content p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
 }
 
 .winners-container {
