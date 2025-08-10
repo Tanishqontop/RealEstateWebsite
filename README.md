@@ -3,7 +3,7 @@
 
 Welcome to the HABITAT website project. This is a modern, luxury real estate site designed to showcase exclusive wellness destinations, sustainable living, and transformative lifestyle experiences. It includes advanced scrolling effects, hover animations, and seamless integration with Calendly for inquiries.
 
-[View Live Demo]() (Inserting demo link soon)
+[View Live Demo](https://youtu.be/jM4bQ2Pp5LA) 
 
 ---
 
